@@ -69,7 +69,7 @@ def parse(html: str, day: date) -> list[Broadcast]:
                 id=prd_id,
                 name=name,
                 price=_int_price(price.get_text() if price else None),
-                image=img.get("src") if img else None,
+                image=urljoin(BASE, img["src"]) if img and img.get("src") else None,  # "//static..." → https:
                 url=urljoin(BASE, href) if href else None,
             ))
 

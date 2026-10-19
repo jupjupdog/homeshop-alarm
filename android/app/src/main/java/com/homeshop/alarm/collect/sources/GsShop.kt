@@ -43,7 +43,7 @@ object GsShop : ChannelSource {
                     id = li.id().removePrefix("li_"),
                     name = a.text().squash(),
                     price = li.selectFirst("dd.prd-price .set-price strong")?.text().digitsToInt(),
-                    image = li.selectFirst("a.prd-img img")?.attr("src")?.ifEmpty { null },
+                    image = li.selectFirst("a.prd-img img")?.absUrl("src")?.ifEmpty { null },  // "//static..." → https:
                     url = href.ifEmpty { null }?.let { a.absUrl("href") },
                 )
             }
