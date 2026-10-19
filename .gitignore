@@ -13,3 +13,4 @@ android/captures/
 .DS_Store
 .pages/
 logs/
+releases/*.apk
