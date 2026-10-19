@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">홈쇼핑 알리미</string>
+    <string name="channel_broadcast">관심 방송 알림</string>
+    <string name="channel_broadcast_desc">관심 카테고리 상품 방송이 시작되기 전에 알려 줍니다</string>
+</resources>

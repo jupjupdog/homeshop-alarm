@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 임시 앱 아이콘: 주황 원 + 흰색 TV -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:fillColor="#FF6B2C" android:pathData="M54,54m-50,0a50,50 0,1 1,100 0a50,50 0,1 1,-100 0" />
+    <path android:fillColor="#FFFFFF" android:pathData="M28,36h52a4,4 0,0 1,4 4v30a4,4 0,0 1,-4 4h-52a4,4 0,0 1,-4 -4v-30a4,4 0,0 1,4 -4z" />
+    <path android:fillColor="#FF6B2C" android:pathData="M47,46l14,9 -14,9z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M42,78h24v4h-24z" />
+</vector>
