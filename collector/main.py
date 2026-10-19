@@ -48,6 +48,8 @@ def collect(days: int) -> tuple[list[Broadcast], list[str]]:
     for label, job in jobs:
         try:
             items = job()
+            if not items:  # 차단 페이지·구조 변경은 200 응답에 0건으로 나타난다
+                raise ValueError("0건 (접속 차단 또는 페이지 구조 변경 의심)")
             print(f"[ok] {label}: {len(items)}건")
             out.extend(items)
         except Exception as e:  # noqa: BLE001 - 채널별 실패 격리

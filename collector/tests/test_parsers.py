@@ -77,5 +77,18 @@ class NormalizeAndCategoryTest(unittest.TestCase):
         json.dumps([b.to_json() for b in items], ensure_ascii=False)  # 직렬화 가능
 
 
+class CollectTest(unittest.TestCase):
+    def test_zero_items_is_reported_as_error(self):
+        from unittest import mock
+        from collector import main
+        with mock.patch.object(main.gsshop, "fetch", return_value="<html>차단</html>"), \
+             mock.patch.object(main.cjonstyle, "fetch", return_value={}), \
+             mock.patch.object(main.cjonstyle, "parse", return_value=[]):
+            items, errors = main.collect(1)
+        self.assertEqual(items, [])
+        self.assertEqual(len(errors), 2)
+        self.assertIn("0건", errors[0])
+
+
 if __name__ == "__main__":
     unittest.main()
