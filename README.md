@@ -4,7 +4,7 @@ TV 홈쇼핑 편성표를 모아 보여 주고, 관심 카테고리 상품 방�
 상품을 누르면 네이버쇼핑·다나와·쿠팡·11번가 검색 결과(최저가순)를 같은 화면에서 비교하는 안드로이드 앱.
 
 ```
-collector/  (Python)   GS샵·CJ온스타일 편성표 수집 → 정제·분류 → schedule.json
+collector/  (Python)   TV 홈쇼핑 7개 채널 편성표 수집 → 정제·분류 → schedule.json
   └ 집 PC 작업 스케줄러가 30분마다 실행 → data 브랜치 push → GitHub Pages 게시
 android/    (Kotlin)   schedule.json 을 받아 편성표·알림·최저가 비교 화면 제공
 ```
@@ -21,8 +21,13 @@ python -m collector.main --out public/schedule.json     # 실제 수집
 |---|---|
 | GS샵 | `gsshop.com/shop/tv/tvScheduleDetail.gs?today=YYYYMMDD` (HTML 조각) |
 | CJ온스타일 | `display.cjonstyle.com/c/rest/tv/tvSchedule?bdDt=YYYYMMDD&broadType=live` (JSON) |
+| 현대홈쇼핑 | `www.hmall.com/api/hf/dp/v1/main-tv-new/tv-list?brodDt=YYYYMMDD&brodPrrgPage=1~6` (JSON, 4시간 단위) |
+| 롯데홈쇼핑 | `www.lotteimall.com/main/scheduleLive.lotte?bdDate=YYYYMMDD` (JSON) |
+| NS홈쇼핑 | `mapi.nsmall.com/md/api/v1/display/media/schedule/tv/YYYYMMDD` (JSON) |
+| 홈앤쇼핑 | `www.hnsmall.com/display/tvschedule-list?broadDay=YYYYMMDD` (HTML 조각) |
+| 공영쇼핑 | `POST www.gongyoungshop.kr/tvshopping/selectScheduleSub.do` `brcStdDate=YYYYMMDD` (JSON) |
 
-- 채널 추가: `collector/sources/<채널>.py` 에 `fetch()` / `parse()` 를 만들고 `main.py` 의 jobs 에 등록.
+- 채널 추가: `collector/sources/<채널>.py` 에 `fetch()` / `parse()` 를 만들고 `main.py` 의 `SOURCES` 에 등록.
 - 카테고리는 상품명 키워드로 분류 (`categorize.py`). 이름을 바꾸면 앱의 `model/Models.kt` 의 `Categories` 도 같이 바꿔야 함.
 - 사이트 구조가 바뀌면 그 채널만 실패하고 나머지는 계속 수집됨 (`schedule.json` 의 `errors` 확인).
 - 각 사이트 이용약관·robots.txt 를 확인하고, 수집 주기를 과하게 줄이지 마세요.
@@ -59,7 +64,8 @@ GitHub Actions 서버는 해외에 있어서 GS샵이 0건으로 막힌다(2026-
 - 단위 테스트: `./gradlew testDebugUnitTest` (수집기가 만든 `sample_schedule.json` 으로 매핑 검증)
 
 ## 3. 다음 단계 아이디어
-- 채널 추가: 현대홈쇼핑, 롯데홈쇼핑, NS, 홈앤쇼핑, 공영쇼핑, T커머스(CJ는 `broadType=plus`)
+- 채널 추가(T커머스): CJ온스타일+(`broadType=plus`), 현대홈쇼핑+샵(현대 `brodChnlNm=dtv`), 롯데OneTV(`scheduleOne.lotte`),
+  NS샵+(`schedule/shopplus`), GS마이샵, K쇼핑, 신세계라이브쇼핑, SK스토아, 쇼핑엔티, W쇼핑
 - 최저가 숫자를 앱에 직접 표시: 쿠팡 파트너스 등 제휴 API 연동 (네이버 쇼핑 검색 API는 2026-07-31 종료)
 - 카테고리 분류 정확도 개선 (키워드 → 학습 모델 또는 LLM 분류)
 

@@ -1,0 +1,69 @@
+{
+ "prdList": [
+  {
+   "brcPgmNm": "재방_건강식품",
+   "brcPgmSchdgId": "10113478",
+   "brcStdDate": "20261020",
+   "brcBgnDtm": "202610200250",
+   "brcEndDtm": "202610200320",
+   "prdBrcSeq": "1",
+   "prdId": "11955697",
+   "prdNm": "상아 침향액 30병 3박스(1+1+1)",
+   "prdPrc": 298000,
+   "fileName": "/97/56/95/18264526_SIZE_.jpg",
+   "imgUrl": "/97/56/95/18264526_200x200.jpg"
+  },
+  {
+   "brcPgmNm": "재방_건강식품",
+   "brcPgmSchdgId": "10113478",
+   "brcStdDate": "20261020",
+   "brcBgnDtm": "202610200250",
+   "brcEndDtm": "202610200320",
+   "prdBrcSeq": "2",
+   "prdId": "11955718",
+   "prdNm": "상아제약 침향액 30병 1박스",
+   "prdPrc": 198000,
+   "fileName": "/18/57/95/18264531_SIZE_.jpg",
+   "imgUrl": "/18/57/95/18264531_200x200.jpg"
+  },
+  {
+   "brcPgmNm": "녹화_건강식품",
+   "brcPgmSchdgId": "10113479",
+   "brcStdDate": "20261020",
+   "brcBgnDtm": "202610200320",
+   "brcEndDtm": "202610200350",
+   "prdBrcSeq": "1",
+   "prdId": "11933491",
+   "prdNm": "더 흑염소 진액 골드 8박스",
+   "prdPrc": 268000,
+   "fileName": "/91/34/93/18064453_SIZE_.jpg",
+   "imgUrl": "/91/34/93/18064453_200x200.jpg"
+  },
+  {
+   "brcPgmNm": "녹화_건강식품",
+   "brcPgmSchdgId": "10113479",
+   "brcStdDate": "20261020",
+   "brcBgnDtm": "202610200320",
+   "brcEndDtm": "202610200350",
+   "prdBrcSeq": "2",
+   "prdId": "11933492",
+   "prdNm": "더 흑염소 진액 골드 4박스",
+   "prdPrc": 158000,
+   "fileName": "/92/34/93/18064454_SIZE_.jpg",
+   "imgUrl": "/92/34/93/18064454_200x200.jpg"
+  },
+  {
+   "brcPgmNm": "재방_가전",
+   "brcPgmSchdgId": "10113480",
+   "brcStdDate": "20261020",
+   "brcBgnDtm": "202610200410",
+   "brcEndDtm": "202610200500",
+   "prdBrcSeq": "1",
+   "prdId": "11958543",
+   "prdNm": "방송운영 벤하임 오토클린 스테이션 청소기 V50",
+   "prdPrc": 149000,
+   "fileName": "/43/85/95/18285593_SIZE_.jpg",
+   "imgUrl": "/43/85/95/18285593_200x200.jpg"
+  }
+ ]
+}

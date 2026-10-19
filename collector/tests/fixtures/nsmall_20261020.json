@@ -1,0 +1,134 @@
+{
+ "data": {
+  "resultCode": "0000",
+  "resultMessage": "요청이 정상적으로 처리되었습니다.",
+  "resultData": {
+   "totalOrgan": [
+    {
+     "endDtm": "20261020024000",
+     "goodsCd": 36224739,
+     "liveCd": "B",
+     "pgmCd": "1139926",
+     "startDtm": "20261020020000",
+     "pgmNm": "N_히트상품앵콜방송 2부",
+     "brdctOrd": "2",
+     "goods": {
+      "goodsCd": 36224739,
+      "productNm": "안면도농협 태양초 햇 고춧가루 500gX4봉",
+      "salePrice": 79900,
+      "applyPrice": 79900,
+      "brandNm": "",
+      "formStartDttm": "2026-10-20 02:00:00",
+      "formEndDttm": "2026-10-20 02:40:00"
+     },
+     "relTotalOrgan": [
+      {
+       "goodsCd": 36224686,
+       "imageUrl": "http://product-image.prod-nsmall.com/new/36224686_F.jpg",
+       "relGbn": "subProd",
+       "broadProdYn": "Y",
+       "pgmCd": "1139926",
+       "goods": {
+        "goodsCd": 36224686,
+        "productNm": "안면도농협 태양초 햇 고춧가루 500gx8봉",
+        "salePrice": 157800,
+        "applyPrice": 157800,
+        "brandNm": "",
+        "formStartDttm": "2026-10-20 02:00:00",
+        "formEndDttm": "2026-10-20 02:40:00"
+       }
+      },
+      {
+       "goodsCd": 36205030,
+       "imageUrl": "http://product-image.prod-nsmall.com/new/36205030_F.jpg",
+       "relGbn": "subProd",
+       "broadProdYn": "Y",
+       "pgmCd": "1139926",
+       "goods": {
+        "goodsCd": 36205030,
+        "productNm": "어부예찬 국내산 촉촉오징어 왕특대 8미(2미X4봉)+오징어채 1봉(50g)",
+        "salePrice": 79900,
+        "applyPrice": 79900,
+        "brandNm": "",
+        "formStartDttm": "2026-10-20 02:00:00",
+        "formEndDttm": "2026-10-20 02:40:00"
+       }
+      }
+     ]
+    },
+    {
+     "endDtm": "20261020040000",
+     "goodsCd": 36048537,
+     "liveCd": "B",
+     "pgmCd": "1139927",
+     "startDtm": "20261020032000",
+     "pgmNm": "N_히트상품앵콜방송 3부",
+     "brdctOrd": "1",
+     "goods": {
+      "goodsCd": 36048537,
+      "productNm": "핀란디아 블루베리 10통+전용스푼 3개",
+      "salePrice": 198000,
+      "applyPrice": 198000,
+      "brandNm": "",
+      "formStartDttm": "2026-10-20 03:20:00",
+      "formEndDttm": "2026-10-20 04:00:00"
+     },
+     "relTotalOrgan": [
+      {
+       "goodsCd": 35965436,
+       "imageUrl": "http://product-image.prod-nsmall.com/new/35965436_F.jpg",
+       "relGbn": "subProd",
+       "broadProdYn": "Y",
+       "pgmCd": "1139927",
+       "goods": {
+        "goodsCd": 35965436,
+        "productNm": "골드파로효소 캡슐레이션 14박스",
+        "salePrice": 478000,
+        "applyPrice": 478000,
+        "brandNm": "",
+        "formStartDttm": "2026-10-20 03:20:00",
+        "formEndDttm": "2026-10-20 04:00:00"
+       }
+      }
+     ]
+    },
+    {
+     "endDtm": "20261020050000",
+     "goodsCd": 36271401,
+     "liveCd": "B",
+     "pgmCd": "1139928",
+     "startDtm": "20261020040000",
+     "pgmNm": "N_히트상품앵콜방송 4부",
+     "brdctOrd": "1",
+     "goods": {
+      "goodsCd": 36271401,
+      "productNm": "서울F&B 고칼슘두유습관 80팩(호두아몬드 190mlX40팩+검은참깨 190mlX40팩)",
+      "salePrice": 30900,
+      "applyPrice": 30900,
+      "brandNm": "",
+      "formStartDttm": "2026-10-20 04:00:00",
+      "formEndDttm": "2026-10-20 05:00:00"
+     },
+     "relTotalOrgan": [
+      {
+       "goodsCd": 36084704,
+       "imageUrl": "http://product-image.prod-nsmall.com/new/36084704_F.jpg",
+       "relGbn": "subProd",
+       "broadProdYn": "Y",
+       "pgmCd": "1139928",
+       "goods": {
+        "goodsCd": 36084704,
+        "productNm": "조리기능장 임성근의 특 도가니탕 800gX10팩",
+        "salePrice": 49900,
+        "applyPrice": 49900,
+        "brandNm": "",
+        "formStartDttm": "2026-10-20 04:00:00",
+        "formEndDttm": "2026-10-20 05:00:00"
+       }
+      }
+     ]
+    }
+   ]
+  }
+ }
+}
