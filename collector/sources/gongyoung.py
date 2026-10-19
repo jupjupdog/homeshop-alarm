@@ -5,7 +5,7 @@
  - Accept: application/json 을 주지 않으면 XML 로 응답한다.
  - prdList[] 1건 = 편성 상품 1개. 방송 = brcPgmSchdgId 로 묶고 prdBrcSeq 순서로 정렬.
  - brcBgnDtm/brcEndDtm = YYYYMMDDHHMM, brcPgmNm = 프로그램명(예: "재방_건강식품")
- - 이미지 fileName 의 _SIZE_ 를 지우면 원본 경로가 된다.
+ - 이미지 fileName 의 _SIZE_ 를 지우면 원본 경로, 뒤에 /dims/resize/Q_80,{폭} 을 붙이면 축소본.
 """
 from __future__ import annotations
 
@@ -18,6 +18,7 @@ CHANNEL = "공영쇼핑"
 BASE = "https://www.gongyoungshop.kr"
 URL = BASE + "/tvshopping/selectScheduleSub.do"
 IMG_BASE = "https://img.publichs.com/ECMCFO/share/product"
+THUMB = "/dims/resize/Q_80,384"   # 원본은 600KB 넘음. 사이트 목록과 같은 CDN 축소본(약 20KB)
 ITEM_URL = BASE + "/goods/selectGoodsDetail.do?prdId={prd}"
 
 
@@ -45,7 +46,7 @@ def parse(data: dict) -> list[Broadcast]:
             id=str(x["prdId"]),
             name=" ".join(str(x.get("prdNm") or "").split()),
             price=x.get("prdPrc") or None,
-            image=IMG_BASE + file_name.replace("_SIZE_", "") if file_name else None,
+            image=IMG_BASE + file_name.replace("_SIZE_", "") + THUMB if file_name else None,
             url=ITEM_URL.format(prd=x["prdId"]),
         )
         key = x.get("brcPgmSchdgId") or x["brcBgnDtm"]

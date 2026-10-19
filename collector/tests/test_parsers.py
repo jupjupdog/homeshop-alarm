@@ -211,7 +211,7 @@ class GongyoungTest(unittest.TestCase):
     def test_product_fields(self):
         p = self.items[0].products[0]
         self.assertEqual(p.price, 298000)
-        self.assertEqual(p.image, "https://img.publichs.com/ECMCFO/share/product/97/56/95/18264526.jpg")
+        self.assertEqual(p.image, "https://img.publichs.com/ECMCFO/share/product/97/56/95/18264526.jpg/dims/resize/Q_80,384")
         self.assertEqual(p.url, "https://www.gongyoungshop.kr/goods/selectGoodsDetail.do?prdId=11955697")
 
 

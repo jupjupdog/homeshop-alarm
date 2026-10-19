@@ -39,6 +39,8 @@ SOURCES = [
 def enrich(broadcasts: list[Broadcast]) -> None:
     for b in broadcasts:
         for p in b.products:
+            if p.price is not None and p.price <= 0:   # 렌탈·상담 상품은 0원으로 온다 → 가격 없음
+                p.price = None
             p.category = categorize(p.name)
             p.search_query = to_search_query(p.name)
 
