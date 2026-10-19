@@ -79,9 +79,11 @@ class ScheduleViewModel(private val c: AppContainer) : ViewModel() {
     fun refresh() = viewModelScope.launch {
         status.value = Status(refreshing = true)
         status.value = try {
-            c.scheduleRepository.refresh()
+            val result = c.scheduleRepository.refresh()
+            c.settingsRepository.setLastSyncMillis(System.currentTimeMillis())
             c.alarmScheduler.reschedule(c.scheduleRepository.upcoming())
-            Status()
+            val failed = result.errors.map { it.substringBefore(' ') }.distinct()
+            Status(error = if (failed.isEmpty()) null else "일부 채널을 받지 못했어요: ${failed.joinToString()}")
         } catch (e: Exception) {
             Status(error = e.message ?: "편성표를 불러오지 못했습니다")
         }

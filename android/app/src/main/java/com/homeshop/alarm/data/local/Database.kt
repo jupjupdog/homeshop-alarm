@@ -48,16 +48,24 @@ abstract class ScheduleDao {
     @Query("SELECT * FROM schedule_product WHERE `key` = :key")
     abstract fun observe(key: String): Flow<ScheduleProductEntity?>
 
-    @Query("DELETE FROM schedule_product")
-    abstract suspend fun clear()
+    @Query("DELETE FROM schedule_product WHERE channel IN (:channels)")
+    abstract suspend fun deleteChannels(channels: List<String>)
+
+    @Query("DELETE FROM schedule_product WHERE endMillis < :before")
+    abstract suspend fun deleteEndedBefore(before: Long)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     abstract suspend fun insertAll(items: List<ScheduleProductEntity>)
 
+    /**
+     * 새 편성표 반영. 끝까지 받아 온 채널은 통째로 바꾸고(편성 변경·삭제 반영),
+     * 일부 날짜만 받은 채널은 받은 만큼만 덮어써서 기존 캐시를 지킨다. 지난 방송은 정리.
+     */
     @Transaction
-    open suspend fun replaceAll(items: List<ScheduleProductEntity>) {
-        clear()
+    open suspend fun merge(completeChannels: List<String>, items: List<ScheduleProductEntity>, endedBefore: Long) {
+        if (completeChannels.isNotEmpty()) deleteChannels(completeChannels)
         insertAll(items)
+        deleteEndedBefore(endedBefore)
     }
 }
 

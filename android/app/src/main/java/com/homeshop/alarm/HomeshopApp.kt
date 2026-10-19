@@ -2,10 +2,10 @@ package com.homeshop.alarm
 
 import android.app.Application
 import android.content.Context
+import com.homeshop.alarm.collect.ScheduleCollector
 import com.homeshop.alarm.data.ScheduleRepository
 import com.homeshop.alarm.data.SettingsRepository
 import com.homeshop.alarm.data.local.AppDatabase
-import com.homeshop.alarm.data.remote.ScheduleApi
 import com.homeshop.alarm.notify.AlarmReceiver
 import com.homeshop.alarm.notify.AlarmScheduler
 import com.homeshop.alarm.work.SyncWorker
@@ -17,7 +17,7 @@ import com.homeshop.alarm.work.SyncWorker
 class AppContainer(context: Context) {
     private val db = AppDatabase.create(context)
     val settingsRepository = SettingsRepository(context)
-    val scheduleRepository = ScheduleRepository(ScheduleApi(BuildConfig.SCHEDULE_URL), db.scheduleDao())
+    val scheduleRepository = ScheduleRepository(ScheduleCollector(), db.scheduleDao())
     val alarmScheduler = AlarmScheduler(context, settingsRepository)
 }
 

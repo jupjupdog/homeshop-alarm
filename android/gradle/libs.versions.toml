@@ -12,6 +12,7 @@ work = "2.10.0"
 datastore = "1.1.1"
 serializationJson = "1.7.3"
 okhttp = "4.12.0"
+jsoup = "1.18.3"
 coil = "2.7.0"
 browser = "1.8.0"
 junit = "4.13.2"
@@ -36,6 +37,7 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationJson" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+jsoup = { group = "org.jsoup", name = "jsoup", version.ref = "jsoup" }
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 

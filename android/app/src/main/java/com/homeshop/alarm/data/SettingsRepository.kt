@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -23,6 +24,7 @@ class SettingsRepository(private val context: Context) {
         val INTERESTS = stringSetPreferencesKey("interest_categories")
         val LEAD = intPreferencesKey("lead_minutes")
         val SCHEDULED_ALARMS = stringSetPreferencesKey("scheduled_alarm_keys")
+        val LAST_SYNC = longPreferencesKey("last_sync_millis")
     }
 
     val settings: Flow<UserSettings> = context.dataStore.data.map {
@@ -47,4 +49,9 @@ class SettingsRepository(private val context: Context) {
 
     suspend fun setScheduledAlarmKeys(keys: Set<String>) =
         context.dataStore.edit { it[Keys.SCHEDULED_ALARMS] = keys }
+
+    /** 마지막으로 편성표 수집에 성공한 시각 — 앱을 열 때마다 다시 받지 않도록. */
+    suspend fun lastSyncMillis(): Long = context.dataStore.data.first()[Keys.LAST_SYNC] ?: 0L
+
+    suspend fun setLastSyncMillis(millis: Long) = context.dataStore.edit { it[Keys.LAST_SYNC] = millis }
 }

@@ -6,9 +6,6 @@ plugins {
     alias(libs.plugins.ksp)
 }
 
-val scheduleUrl: String = (project.findProperty("scheduleUrl") as String?)
-    ?: "https://YOUR_GITHUB_ID.github.io/homeshop-alarm/schedule.json"
-
 android {
     namespace = "com.homeshop.alarm"
     compileSdk = 35
@@ -17,9 +14,8 @@ android {
         applicationId = "com.homeshop.alarm"
         minSdk = 26
         targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
-        buildConfigField("String", "SCHEDULE_URL", "\"$scheduleUrl\"")
+        versionCode = 2
+        versionName = "0.2.0"
     }
 
     buildTypes {
@@ -37,8 +33,9 @@ android {
     }
     buildFeatures {
         compose = true
-        buildConfig = true
     }
+    // 파서 단위 테스트는 Python 수집기와 같은 실제 응답 샘플을 쓴다
+    sourceSets["test"].resources.srcDir("../../collector/tests/fixtures")
 }
 
 ksp {
@@ -68,6 +65,7 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.okhttp)
+    implementation(libs.jsoup)
     implementation(libs.coil.compose)
 
     testImplementation(libs.junit)

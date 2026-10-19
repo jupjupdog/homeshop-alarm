@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
-        if (savedInstanceState == null) SyncWorker.runNow(this)
+        if (savedInstanceState == null) SyncWorker.runNow(this)   // 최근에 받았으면 수집은 건너뜀
 
         setContent {
             HomeshopTheme {
