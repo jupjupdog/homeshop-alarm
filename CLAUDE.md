@@ -20,6 +20,7 @@ git clone https://github.com/dpconde/claude-android-skill.git ~/.claude/skills/c
 - `schedule.json` 형식을 바꾸면 `version` 을 올리고 `data/remote/ScheduleApi.kt` DTO 도 같이 바꾼다.
 
 ## 명령
+- 편성표 게시(집 PC, 작업 스케줄러 `HomeshopAlarm-Publish` 가 30분마다 실행): `.venv\Scripts\python scripts\publish_pages.py` → `data` 브랜치 → Pages
 - 수집기 테스트: `python -m unittest discover -s collector/tests -t .`
 - 앱 테스트: `cd android && ./gradlew testDebugUnitTest`
 - 앱 빌드: `cd android && ./gradlew assembleDebug`

@@ -11,3 +11,5 @@ android/.idea/
 android/captures/
 *.iml
 .DS_Store
+.pages/
+logs/

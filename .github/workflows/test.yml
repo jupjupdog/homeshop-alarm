@@ -1,0 +1,24 @@
+name: test
+
+# 편성표 수집·게시는 집 PC(scripts/publish_pages.py)가 한다. GitHub Actions 는 해외 서버라 GS샵이 막힌다.
+# 여기서는 코드가 바뀔 때 수집기 파서 테스트만 돌린다.
+on:
+  push:
+    branches: [main]
+    paths: ["collector/**", ".github/workflows/test.yml"]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  collector:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r collector/requirements.txt
+      - run: python -m unittest discover -s collector/tests -t .

@@ -5,7 +5,7 @@ TV 홈쇼핑 편성표를 모아 보여 주고, 관심 카테고리 상품 방�
 
 ```
 collector/  (Python)   GS샵·CJ온스타일 편성표 수집 → 정제·분류 → schedule.json
-  └ GitHub Actions 가 30분마다 실행해서 GitHub Pages 에 게시
+  └ 집 PC 작업 스케줄러가 30분마다 실행 → data 브랜치 push → GitHub Pages 게시
 android/    (Kotlin)   schedule.json 을 받아 편성표·알림·최저가 비교 화면 제공
 ```
 
@@ -27,15 +27,20 @@ python -m collector.main --out public/schedule.json     # 실제 수집
 - 사이트 구조가 바뀌면 그 채널만 실패하고 나머지는 계속 수집됨 (`schedule.json` 의 `errors` 확인).
 - 각 사이트 이용약관·robots.txt 를 확인하고, 수집 주기를 과하게 줄이지 마세요.
 
-### GitHub Pages 게시
-1. 이 폴더를 GitHub 저장소로 올림 (예: `homeshop-alarm`)
-2. 저장소 Settings → Pages → Source: **GitHub Actions**
-3. Actions 탭에서 `collect-schedule` 을 한 번 수동 실행 (Run workflow)
-4. `https://<github-id>.github.io/homeshop-alarm/schedule.json` 이 열리면 성공
+### GitHub Pages 게시 (집 PC에서 수집)
+GitHub Actions 서버는 해외에 있어서 GS샵이 0건으로 막힌다(2026-10 확인). 그래서 수집은 집 PC가 한다.
 
-> GitHub Actions 서버는 해외에 있어서 일부 쇼핑몰이 접속을 막을 수 있습니다.
-> 수집이 계속 실패하면 집 PC에서 `python -m collector.main` 을 주기 실행(작업 스케줄러)하고
-> 결과 파일만 올리는 방식으로 바꾸면 됩니다.
+1. 저장소: https://github.com/jupjupdog/homeshop-alarm
+2. 가상환경: `python -m venv .venv` → `.venv\Scripts\pip install -r collector/requirements.txt`
+3. 한 번 수동 게시: `.venv\Scripts\python scripts\publish_pages.py` (결과는 `logs/publish.log`)
+   - `data` 브랜치에 `schedule.json` 만 커밋 1개로 덮어써서 push (`.pages/` 에 worktree)
+4. 저장소 Settings → Pages → Source: **Deploy from a branch**, Branch: `data` / `(root)`
+5. 작업 스케줄러 `HomeshopAlarm-Publish`: 매시 7분·37분에 `.venv\Scripts\pythonw.exe scripts\publish_pages.py` 실행 (창 없음)
+6. `https://jupjupdog.github.io/homeshop-alarm/schedule.json` 이 열리면 성공
+
+- PC가 꺼져 있으면 갱신이 멈추고, 앱은 마지막 편성표를 그대로 쓴다.
+- 모든 채널이 실패하면 게시하지 않는다. 한 채널만 0건이어도 `errors` 에 기록된다.
+- GitHub Actions(`test.yml`)는 `collector/` 가 바뀔 때 파서 테스트만 돌린다.
 
 ## 2. 안드로이드 앱 (android)
 
